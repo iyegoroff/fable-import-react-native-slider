@@ -1,10 +1,7 @@
 module Fable.Import.ReactNativeSlider
 
-open Fable.Helpers.ReactNative
-open Fable.Helpers.React
-open Fable.Helpers.ReactNative.Props
+open Fable.Helpers
 open Fable.Core.JsInterop
-open Fable.Import
 open Fable.Core
 
 module Props =
@@ -59,13 +56,13 @@ module Props =
      /// the slider is released).
      | OnSlidingComplete of (float -> unit)
      /// The style applied to the slider container.
-     | Style of IStyle list
+     | Style of Fable.Helpers.ReactNative.Props.IStyle list
      /// The style applied to the track.
-     | TrackStyle of IStyle list
+     | TrackStyle of Fable.Helpers.ReactNative.Props.IStyle list
      /// The style applied to the thumb.
-     | ThumbStyle of IStyle list
+     | ThumbStyle of Fable.Helpers.ReactNative.Props.IStyle list
      /// Sets an image for the thumb.
-     | ThumbImage of IImageSource
+     | ThumbImage of Fable.Helpers.ReactNative.Props.IImageSource
      /// Set this to true to visually see the thumb touch rect in green.
      | DebugTouchArea of bool
      /// Set to true to animate values with default 'timing' animation type
@@ -78,4 +75,4 @@ module Props =
 open Props
 
 let inline slider (props: SliderProps list): React.ReactElement =
-  ofImport "default" "react-native-slider" (keyValueList CaseRules.LowerFirst props) []
+  React.ofImport "default" "react-native-slider" (keyValueList CaseRules.LowerFirst props) []
